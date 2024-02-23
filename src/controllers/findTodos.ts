@@ -1,20 +1,10 @@
 import { Request, Response } from "express";
 import todos from "../schemas/todoSchema";
 
-// export const findTodos = async (req: Request, res: Response) => {
-//   try {
-//     const allTodos = await todos.find();
-//     console.log("All Todos" + allTodos);
-//     res.status(200).send(allTodos);
-//   } catch (error) {
-//     console.error("Error finding todos:", error);
-//     res.status(500).send("Internal Server Error");
-//   }
-// };
-// Find Todos Controller
+
 export const findTodos = async (req:Request, res:Response) => {
   try {
-    // Find todos associated with the authenticated user
+ 
     const alltodos = await todos.find({ user: req.user._id });
     res.json(alltodos);
   } catch (error) {
@@ -65,7 +55,7 @@ export const updateTodo = async (req: Request, res: Response) => {
 
     foundTodo.title = title;
 
-    // Save the updated genre
+   
     const updatedTodo = await foundTodo.save();
 
     res.status(200).json(updatedTodo);
@@ -86,7 +76,7 @@ export const completeTodo = async (req: Request, res: Response) => {
 
     foundTodo.completed = true;
 
-    // Save the updated genre
+  
     const updatedTodo = await foundTodo.save();
 
     res.status(200).json(updatedTodo);
@@ -107,7 +97,7 @@ export const deleteTodo = async (req: Request, res: Response) => {
       return res.status(404).json({ error: "Todo not found" });
     }
 
-    await todos.findByIdAndDelete(id); // Correctly delete the todo by its ID
+    await todos.findByIdAndDelete(id);
 
     res.status(200).send("Deleted a todo");
   } catch (error) {

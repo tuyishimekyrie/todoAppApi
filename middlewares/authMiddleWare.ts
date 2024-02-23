@@ -1,7 +1,7 @@
 import config from "config";
 import { Response, Request, NextFunction } from "express";
 import jwt from "jsonwebtoken";
-// import user from '../schemas/userSchema';
+
 declare global {
   namespace Express {
     interface Request {
