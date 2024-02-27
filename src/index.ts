@@ -1,14 +1,15 @@
+require("dotenv").config();
 import express from "express";
 import todos from "./routers/todos";
 import users from "./routers/users";
 import auth from "./routers/auth";
 import mongoose from "mongoose";
-import config from "config"
+import config from "config";
 const app = express();
 
 if (!config.get("jwtPrivateKey")) {
-    console.error("FATAL ERROR: jwtPrivateKey is not defined");
-    process.exit(1)
+  console.error("FATAL ERROR: jwtPrivateKey is not defined");
+  process.exit(1);
 }
 
 mongoose
