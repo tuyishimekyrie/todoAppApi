@@ -7,10 +7,10 @@ import mongoose from "mongoose";
 import config from "config";
 const app = express();
 
-if (!config.get("jwtPrivateKey")) {
-  console.error("FATAL ERROR: jwtPrivateKey is not defined");
-  process.exit(1);
-}
+// if (!config.get("jwtPrivateKey")) {
+//   console.error("FATAL ERROR: jwtPrivateKey is not defined");
+//   process.exit(1);
+// }
 
 mongoose
   .connect("mongodb://localhost:27017/todoAppApi")
