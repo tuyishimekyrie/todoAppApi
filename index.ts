@@ -1,8 +1,8 @@
 require("dotenv").config();
 import express from "express";
-import todos from "./routers/todos";
-import users from "./routers/users";
-import auth from "./routers/auth";
+import todos from "./src/routers/todos";
+import users from "./src/routers/users";
+import auth from "./src/routers/auth";
 import mongoose from "mongoose";
 import config from "config";
 const app = express();
