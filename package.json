@@ -2,9 +2,10 @@
   "name": "todoappapi",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist src/index.js",
   "scripts": {
-    "start": "node",
+    "start": "node dist/app.js",
+    "dev": "nodemon --exec ts-node src/app.ts",
     "build": "tsc"
   },
   "keywords": [],
