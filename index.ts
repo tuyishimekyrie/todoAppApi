@@ -1,4 +1,4 @@
-require("dotenv").config();
+// require("dotenv").config();
 import express from "express";
 import todos from "./src/routers/todos";
 import users from "./src/routers/users";
