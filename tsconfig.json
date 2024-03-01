@@ -5,7 +5,8 @@
     "module": "commonjs",
     "strict": false,
     "esModuleInterop": true,
-    "outDir": "./dist"
+    "outDir": "./dist",
+    "resolveJsonModule": true // Add this line to resolve package.json import
   },
   "include": ["src/**/*.ts", "index.ts"],
   "exclude": ["node_modules"]

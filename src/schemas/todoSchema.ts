@@ -1,5 +1,35 @@
 import mongoose from "mongoose";
 
+/**
+ * @openapi
+ * components:
+ *  schemas:
+ *    CreateTodoInput:
+ *      type: object
+ *      required:
+ *        - title
+ *      properties:
+ *        title:
+ *          type: string
+ *        completed:
+ *          type: string
+ *          default: false
+ *        time:
+ *          type: Date
+ *          default: Date.now
+ *    CreateTodoResponse:
+ *      type: object
+ *      properties:
+ *        title:
+ *          type: string
+ *        completed:
+ *          type: string
+ *        _id:
+ *          type: string
+ *        date:
+ *          type: string
+ */
+
 const todoSchema = new mongoose.Schema({
   title: {
     type: String,
