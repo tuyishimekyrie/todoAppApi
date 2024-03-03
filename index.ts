@@ -15,7 +15,7 @@ if (!config.get("jwtPrivateKey")) {
 }
 
 mongoose.connect(
-  "mongodb+srv://tuyishimehope:visionkyrie%40123@todoappapi.jaedp2j.mongodb.net/"
+  "mongodb+srv://tuyishimehope:visionkyrie%40123@todoappapi.jaedp2j.mongodb.net/todoappapi"
 );
 
 // Connect to MongoDB Atlas
