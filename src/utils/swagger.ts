@@ -53,10 +53,13 @@ function swaggerDocs(app: Express, port: number) {
 
   // Log Swagger availability
   // log.info(`Swagger docs available at http://localhost:${port}/docs`);
-  app.use((req, res, next) => {
-    log.info(`Swagger docs available at http://${req.get("host")}/docs`);
-    next();
-  });
+app.use((req, res, next) => {
+  const host = req.get("host");
+  const protocol = req.protocol;
+  log.info(`Swagger docs available at ${protocol}://${host}/docs`);
+  next();
+});
+
 }
 
 export default swaggerDocs;
