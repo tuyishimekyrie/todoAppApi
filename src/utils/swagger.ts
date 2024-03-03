@@ -52,7 +52,11 @@ function swaggerDocs(app: Express, port: number) {
   });
 
   // Log Swagger availability
-  log.info(`Swagger docs available at http://localhost:${port}/docs`);
+  // log.info(`Swagger docs available at http://localhost:${port}/docs`);
+  app.use((req, res, next) => {
+    log.info(`Swagger docs available at http://${req.get("host")}/docs`);
+    next();
+  });
 }
 
 export default swaggerDocs;

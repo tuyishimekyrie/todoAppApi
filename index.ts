@@ -47,7 +47,11 @@ app.get("/", (req, res) => {
   res.send("Hello");
 });
 
-app.listen(8000, () => {
-  console.log("Port running on 8000");
-  swaggerDocs(app, 8000);
+const DEFAULT_PORT = 8000; // Default port if none is provided
+
+const server = app.listen(DEFAULT_PORT, () => {
+  const address = server.address();
+  const port = typeof address === "string" ? DEFAULT_PORT : address.port;
+  console.log(`Server is running on port ${port}`);
+  swaggerDocs(app, port); // Pass the dynamically assigned port to the swaggerDocs function
 });
