@@ -4,6 +4,35 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = __importDefault(require("mongoose"));
+/**
+ * @openapi
+ * components:
+ *  schemas:
+ *    CreateTodoInput:
+ *      type: object
+ *      required:
+ *        - title
+ *      properties:
+ *        title:
+ *          type: string
+ *        completed:
+ *          type: string
+ *          default: false
+ *        time:
+ *          type: Date
+ *          default: Date.now
+ *    CreateTodoResponse:
+ *      type: object
+ *      properties:
+ *        title:
+ *          type: string
+ *        completed:
+ *          type: string
+ *        _id:
+ *          type: string
+ *        date:
+ *          type: string
+ */
 const todoSchema = new mongoose_1.default.Schema({
     title: {
         type: String,
