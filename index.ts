@@ -5,6 +5,7 @@ import users from "./src/routers/users";
 import auth from "./src/routers/auth";
 import mongoose from "mongoose";
 import config from "config";
+import cors from "cors"
 
 import swaggerDocs from "./src/utils/swagger";
 const app = express();
@@ -27,6 +28,7 @@ mongoose.connection.on("error", (error) => {
   console.error("MongoDB Atlas Connection Error:", error);
 });
 app.use(express.json());
+app.use(cors());
 
 /**
  * @openapi

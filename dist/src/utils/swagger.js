@@ -47,6 +47,12 @@ function swaggerDocs(app, port) {
         res.send(swaggerSpec);
     });
     // Log Swagger availability
-    logger_1.default.info(`Swagger docs available at http://localhost:${port}/docs`);
+    // log.info(`Swagger docs available at http://localhost:${port}/docs`);
+    app.use((req, res, next) => {
+        const host = req.get("host");
+        const protocol = req.protocol;
+        logger_1.default.info(`Swagger docs available at ${protocol}://${host}/docs`);
+        next();
+    });
 }
 exports.default = swaggerDocs;
