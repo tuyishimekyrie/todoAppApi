@@ -4,7 +4,8 @@ import {
   deleteTodo,
   findTodos,
     updateTodo,
-  completeTodo
+  completeTodo,
+  allTodos
 } from "../controllers/findTodos";
 import auth from "../../middlewares/authMiddleWare";
 const router = express.Router();
@@ -20,6 +21,7 @@ const router = express.Router();
    *         description: App is up and running
    */
 router.get("/", auth, findTodos);
+router.get("/allTodos", auth, allTodos);
  /**
    * @openapi
    * '/api/todos/create':

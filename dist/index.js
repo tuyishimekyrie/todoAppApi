@@ -17,7 +17,11 @@ if (!config_1.default.get("jwtPrivateKey")) {
     console.error("FATAL ERROR: jwtPrivateKey is not defined");
     process.exit(1);
 }
-mongoose_1.default.connect("mongodb+srv://tuyishimehope:visionkyrie%40123@todoappapi.jaedp2j.mongodb.net/todoappapi");
+mongodb: mongoose_1.default.connect("mongodb+srv://tuyishimehope:visionkyrie%40123@todoappapi.jaedp2j.mongodb.net/todoappapi"
+// "mongodb+srv://tuyishimehope:visionkyrie%40123@todoappapi.jaedp2j.mongodb.net/todoappapi"
+);
+// mongodb+srv://tuyishimehope:visionkyrie%40123@todoappapi.jaedp2j.mongodb.net/?retryWrites=true&w=majority&appName=todoappapi
+// mongodb+srv://tuyishimehope:<password>@todoappapi.jaedp2j.mongodb.net/?retryWrites=true&w=majority&appName=todoappapi
 // Connect to MongoDB Atlas
 mongoose_1.default.connection.on("connected", () => {
     console.log("Connected to MongoDB Atlas");

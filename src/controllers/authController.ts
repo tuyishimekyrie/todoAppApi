@@ -20,10 +20,15 @@ export const logUser = async (req: Request, res: Response) => {
     );
     if (!validPassword)
       return res.status(400).send("Invalid email or password");
-
-    const token = jwt.sign({ _id: user._id }, config.get("jwtPrivateKey"));
+    // Determine if user is admin based on your logic (e.g., user.isAdmin)
+    const isAdmin = user.isAdmin || false;
+    const payload = {
+      _id: user._id,
+      isAdmin: isAdmin,
+    };
+    const token = jwt.sign(payload, config.get("jwtPrivateKey"));
     // res.send("Success");
-    res.send(token);
+       res.json({ token, isAdmin });
   } catch (error) {
     res.status(500).send("Internal Server Error");
   }

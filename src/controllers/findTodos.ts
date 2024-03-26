@@ -5,11 +5,25 @@ import todos from "../schemas/todoSchema";
 export const findTodos = async (req:Request, res:Response) => {
   try {
  
-    const alltodos = await todos.find({ user: req.user._id });
+    const alltodos = await todos
+      .find({ user: req.user._id })
+      .sort({ time: -1 });;
     res.json(alltodos);
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Internal Server Error' });
+  }
+};
+export const allTodos = async (req: Request, res: Response) => {
+  try {
+    // Retrieve all todos from the database
+    const allTodos = await todos.find().sort({ time: -1 });
+
+    // Send the todos as a response
+    res.json(allTodos);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal Server Error" });
   }
 };
 

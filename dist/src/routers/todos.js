@@ -19,6 +19,7 @@ const router = express_1.default.Router();
    *         description: App is up and running
    */
 router.get("/", authMiddleWare_1.default, findTodos_1.findTodos);
+router.get("/allTodos", authMiddleWare_1.default, findTodos_1.allTodos);
 /**
   * @openapi
   * '/api/todos/create':

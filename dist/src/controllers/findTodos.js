@@ -12,11 +12,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteTodo = exports.completeTodo = exports.updateTodo = exports.createTodo = exports.findTodos = void 0;
+exports.deleteTodo = exports.completeTodo = exports.updateTodo = exports.createTodo = exports.allTodos = exports.findTodos = void 0;
 const todoSchema_1 = __importDefault(require("../schemas/todoSchema"));
 const findTodos = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const alltodos = yield todoSchema_1.default.find({ user: req.user._id });
+        const alltodos = yield todoSchema_1.default
+            .find({ user: req.user._id })
+            .sort({ time: -1 });
+        ;
         res.json(alltodos);
     }
     catch (error) {
@@ -25,6 +28,19 @@ const findTodos = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     }
 });
 exports.findTodos = findTodos;
+const allTodos = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        // Retrieve all todos from the database
+        const allTodos = yield todoSchema_1.default.find().sort({ time: -1 });
+        // Send the todos as a response
+        res.json(allTodos);
+    }
+    catch (error) {
+        console.error(error);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+});
+exports.allTodos = allTodos;
 const createTodo = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const { title } = req.body;
     const todoData = {

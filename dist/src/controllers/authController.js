@@ -27,9 +27,15 @@ const logUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         const validPassword = yield bcryptjs_1.default.compare(req.body.password, user.password);
         if (!validPassword)
             return res.status(400).send("Invalid email or password");
-        const token = jsonwebtoken_1.default.sign({ _id: user._id }, config_1.default.get("jwtPrivateKey"));
+        // Determine if user is admin based on your logic (e.g., user.isAdmin)
+        const isAdmin = user.isAdmin || false;
+        const payload = {
+            _id: user._id,
+            isAdmin: isAdmin,
+        };
+        const token = jsonwebtoken_1.default.sign(payload, config_1.default.get("jwtPrivateKey"));
         // res.send("Success");
-        res.send(token);
+        res.json({ token, isAdmin });
     }
     catch (error) {
         res.status(500).send("Internal Server Error");
