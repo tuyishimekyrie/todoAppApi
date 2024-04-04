@@ -24,6 +24,7 @@ export const logUser = async (req: Request, res: Response) => {
     const isAdmin = user.isAdmin || false;
     const payload = {
       _id: user._id,
+      name: user.name,
       isAdmin: isAdmin,
     };
     const token = jwt.sign(payload, config.get("jwtPrivateKey"));

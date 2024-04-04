@@ -31,6 +31,7 @@ const logUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         const isAdmin = user.isAdmin || false;
         const payload = {
             _id: user._id,
+            name: user.name,
             isAdmin: isAdmin,
         };
         const token = jsonwebtoken_1.default.sign(payload, config_1.default.get("jwtPrivateKey"));
